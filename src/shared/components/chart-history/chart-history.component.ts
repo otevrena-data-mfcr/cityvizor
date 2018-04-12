@@ -3,6 +3,7 @@ import { Component, Input, OnChanges, SimpleChanges, trigger, state, style, tran
 class ChartHistoryBar {
 
   amount:number = 0;
+	budgetAmount:number = 0;
   
   constructor(public year:number){}
 }
@@ -37,6 +38,8 @@ export class ChartHistoryComponent implements OnChanges {
   
   currentYear:number;
   hoverYear:number;
+	
+	maxAmount:number;
   
   constructor(){
     this.currentYear = (new Date()).getFullYear();
@@ -51,17 +54,18 @@ export class ChartHistoryComponent implements OnChanges {
   ngOnChanges(changes:SimpleChanges){
     if(changes.data) {
       changes.data.currentValue.forEach(data => {
-        if(this.barsIndex[data.year]) this.barsIndex[data.year].amount = data.amount;
-      })
+        if(this.barsIndex[data.year]){
+					this.barsIndex[data.year].amount = data.amount || 0;
+					this.barsIndex[data.year].budgetAmount = data.budgetAmount || 0;
+				}
+      });
+			
+			this.maxAmount = this.bars.reduce((max,bar) => max = Math.max(max, bar.amount, bar.budgetAmount),0);
     }
   }
   
   getLastAmount():number{
     return this.barsIndex[this.currentYear].amount;
-  }
-  
-  getMaxAmount():number{
-    return this.bars.reduce((max,bar) => max = Math.max(max,bar.amount),0);
   }
   
   getLink(year:number){
