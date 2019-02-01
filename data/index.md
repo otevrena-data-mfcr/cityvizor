@@ -16,28 +16,28 @@ Vlastnosti dat:
 - data jsou s maximálně hodinovým zpožděním
 - data jsou exportována ve formát JSON
 
-Všechny žádosti jsou na hostname ```cityvizor.cz```.
+Všechny žádosti jsou na hostname ```cityvizor.cz/exports/v1```.
 
 ### Profily obcí
 
-```GET /exports/profiles```
+```GET /profiles```
 
 ### Profil obce
 
-```GET /exports/profiles/:profile```
+```GET /profiles/:profile```
 
 ### Datové sady profilu obce
 
-```GET /exports/profiles/:profile/etls```
+```GET /profiles/:profile/etls```
 
 ### Rozpočty obce
 
-```GET /exports/profiles/:profile/budgets```
+```GET /profiles/:profile/budgets```
 
 ### Rozpočet obce za rok
 
-```GET /exports/profiles/:profile/budgets/:year```
+```GET /profiles/:profile/budgets/:year```
 
 ### Faktury obce za rok
 
-```GET /exports/profiles/:profile/payments/:year```
+```GET /profiles/:profile/payments/:year```
